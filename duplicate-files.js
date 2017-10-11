@@ -24,7 +24,7 @@ DuplicateFiles.prototype = {
       walker.on("file", function (root, fileStats, next) {
         var filePath = root + '/' + fileStats.name
         fs.readFile(filePath, function () {
-          if (extensions.includes(fileExtension(filePath))) {
+          if (!extensions || extensions.includes(fileExtension(filePath))) {
             allPromises.push(hashFile(filePath).then(hash => {
               mappedFiles[hash] = mappedFiles[hash] || []
               mappedFiles[hash].push(filePath)
