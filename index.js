@@ -3,29 +3,34 @@
 
     var walk = require('walk'),
         fs = require('fs'),
-        hashFile = require('hashFile')
+        hashFile = require('hash-file'),
     
     var dir = process.argv[2]
     var walker = walk.walk(dir)
 
     var files = {}
-
+    var allPromises = []
     walker.on("file", function (root, fileStats, next) {
-      fs.readFile(fileStats.name, function () {
-        hashFile(root + '/' + fileStats.name).then(hash => {
-          console.log(hash);
-          //=> 'ac8b2c4b75b2d36988c62b919a857f1baacfcd4c' 
-        })
+      var filePath = root + '/' + fileStats.name
+      fs.readFile(filePath, function () {
+        if(fileStats.type == 'file'){
+          allPromises.push(hashFile(filePath).then(hash => {
+            files[hash] = files[hash] || []
+            files[hash].push(filePath)
+            console.log(hash, files[hash])
+          }))
+        }
         next()
       })
     })
 
     walker.on("errors", function (root, nodeStatsArray, next) {
-
       next()
     })
 
     walker.on("end", function () {
-      console.log("all done")
+      Promise.all(allPromises).then(function(){
+        console.log("all done")        
+      })
     })
 }())
