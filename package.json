@@ -18,8 +18,8 @@
     "lodash": "^4.17.4",
     "walk": "^2.3.9"
   },
-  "repository" : {
-    "type" : "git",
-    "url" : "https://github.com/aljorhythm/duplicate-files/"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aljorhythm/duplicate-files/"
   }
 }
