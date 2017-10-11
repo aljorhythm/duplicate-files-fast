@@ -12,4 +12,25 @@ Walk through all files in directory and also recursively in sub-directories, fil
 
 # run
 
-`node index.js --directory <directory> --extensions <ext1>,<ext2>``
+```node index.js --directory <directory> --extensions <ext1>,<ext2>```
+
+# code
+
+```
+var DuplicateFiles = require('duplicate-files-fast')
+
+var finder = new DuplicateFiles()
+
+var directory = '.'
+var options = {
+  extensions : ['js']
+}
+
+finder.findDuplicates(directory, options).then((duplicates) => {
+  duplicates.forEach(function (duplicate) {
+    console.log('duplicate', duplicate)
+  }, this)
+}, (err) => {
+  console.log('Error: ', err.error)
+})
+```
