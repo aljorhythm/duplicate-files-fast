@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var DuplicateFiles = require('./duplicate-files.js')
+var DuplicateFiles = require('duplicate-files-fast')
 var program = require('commander')
 
 function list(val) {
