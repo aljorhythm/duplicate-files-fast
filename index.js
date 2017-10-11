@@ -4,9 +4,10 @@
     var walk = require('walk'),
         fs = require('fs'),
         hashFile = require('hash-file'),
-    
+        lodash = require('lodash')    
     var dir = process.argv[2]
     var walker = walk.walk(dir)
+
 
     var files = {}
     var allPromises = []
@@ -17,7 +18,6 @@
           allPromises.push(hashFile(filePath).then(hash => {
             files[hash] = files[hash] || []
             files[hash].push(filePath)
-            console.log(hash, files[hash])
           }))
         }
         next()
