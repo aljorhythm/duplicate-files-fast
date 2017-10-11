@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var DuplicateFiles = require('./duplicate-files.js')
 var program = require('commander')
 
