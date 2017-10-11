@@ -2,9 +2,12 @@
   "name": "duplicate-files",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "duplicate-files.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "duplicate-files": "./index.js"
   },
   "author": "Joel Lim",
   "license": "ISC",
@@ -14,5 +17,9 @@
     "hash-file": "^3.0.0",
     "lodash": "^4.17.4",
     "walk": "^2.3.9"
+  },
+  "repository" : {
+    "type" : "git",
+    "url" : "https://github.com/aljorhythm/duplicate-files/"
   }
 }
