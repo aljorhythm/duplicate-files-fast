@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var DuplicateFiles = require('duplicate-files-fast')
+var DuplicateFiles = require('./duplicate-files.js')
 var program = require('commander')
 
 function list(val) {
@@ -33,21 +33,26 @@ function updateUiCount(msg) {
 var options = {
   extensions: program.extensions || null,
   eventHandlers: {
-    'walked_file': (data) => {
+    'walked_file': (fileStats) => {
+      let { name } = fileStats
       walkedFilesCount += 1
-      updateUiCount(' Walked: ' + data.file.name)
+      updateUiCount(' Walked: ' + name)
     },
-    'mapped_file': (data) => {
+    'mapped_file': (fileStats) => {
+      let { name } = fileStats
       mappedFilesCount += 1
-      updateUiCount(' Mapped: ' + data.file.name)
+      updateUiCount(' Mapped: ' + name)
     }
   }
 }
 
-finder.findDuplicates(directory, options).then((duplicates) => {
-  duplicates.forEach(function (duplicate) {
-    console.log(duplicate)
-  }, this)
-}, (err) => {
-  console.log('Error: ', err.error)
-})
+async function main(){
+  try {
+    let duplicates = await finder.findDuplicates(directory, options)
+    console.log(JSON.stringify(duplicates, 0, 4))
+  } catch(err) {
+    console.log('Error: ', err.error)
+  }
+}
+
+main()

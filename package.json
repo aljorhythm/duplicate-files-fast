@@ -3,7 +3,12 @@
   "version": "1.1.1",
   "description": "",
   "main": "duplicate-files.js",
-  "keywords": ["duplicate", "duplicates", "fast", "hash"],
+  "keywords": [
+    "duplicate",
+    "duplicates",
+    "fast",
+    "hash"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,11 +18,12 @@
   "author": "Joel Lim",
   "license": "ISC",
   "dependencies": {
-    "commander": "^2.11.0",
+    "commander": "^2.15.1",
     "file-extension": "^3.1.2",
+    "fs-extra": "^6.0.1",
     "hash-file": "^3.0.0",
-    "lodash": "^4.17.4",
-    "walk": "^2.3.9"
+    "lodash": "^4.17.10",
+    "walk": "^2.3.13"
   },
   "bundledDependencies": [
     "walk"
