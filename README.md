@@ -8,11 +8,11 @@ Walk through all files in directory and also recursively in sub-directories, fil
 
 # installation
 
-`npm install`
+`npm i -g duplicate-files-fast`
 
 # run
 
-```node index.js --directory <directory> --extensions <ext1>,<ext2>```
+```duplicate-files-fast --directory <directory> --extensions <ext1>,<ext2>```
 
 # code
 
