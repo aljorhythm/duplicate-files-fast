@@ -12,7 +12,16 @@ Walk through all files in directory and also recursively in sub-directories, fil
 
 # run
 
+Find out which files are duplicates
+Output is in json format
 ```duplicate-files-fast --directory <directory> --extensions <ext1>,<ext2>```
+
+Remove files mode. Files except the first found file is kept.
+- Removes duplicate
+```duplicate-files-fast --directory <directory> --remove```
+
+- Dry run mode, prints files to be deleted without deleting
+```duplicate-files-fast --directory <directory> --remove --dryrun```
 
 # code
 
